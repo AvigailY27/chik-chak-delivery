@@ -1,0 +1,33 @@
+[
+    {
+      "package_id": "PKG001",
+      "destination": "123 Main St, Tel Aviv",
+      "deadline": "2025-02-21T15:00:00",
+      "weight_kg": 2.5,
+      "constraints": {
+        "requires_cooling": false,
+        "preferred_courier": null
+      }
+    },
+    {
+      "package_id": "PKG002",
+      "destination": "456 Herzl St, Jerusalem",
+      "deadline": "2025-02-21T18:00:00",
+      "weight_kg": 5,
+      "constraints": {
+        "requires_cooling": true,
+        "preferred_courier": "Courier123"
+      }
+    },
+    {
+      "package_id": "PKG003",
+      "destination": "789 Rothschild Blvd, Haifa",
+      "deadline": "2025-02-21T20:00:00",
+      "weight_kg": 1.2,
+      "constraints": {
+        "requires_cooling": false,
+        "preferred_courier": null
+      }
+    }
+  ]
+  

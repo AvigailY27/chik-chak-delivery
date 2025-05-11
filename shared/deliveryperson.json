@@ -1,0 +1,32 @@
+[
+    {
+        "person_id": 1,
+        "name": "יוסי כהן",
+        "capacity": 10,
+        "working_hours": "08:00-16:00"
+    },
+    {
+        "person_id": 2,
+        "name": "דנה לוי",
+        "capacity": 25,
+        "working_hours": "10:00-22:00"
+    },
+    {
+        "person_id": 3,
+        "name": "רמי שמעון",
+        "capacity": 5,
+        "working_hours": "09:00-14:00"
+    },
+    {
+        "person_id": 4,
+        "name": "עומרי אזולאי",
+        "capacity": 8,
+        "working_hours": "12:00-20:00"
+    },
+    {
+        "person_id": 5,
+        "name": "שלום גולדמן",
+        "capacity": 30,
+        "working_hours": "07:00-15:00"
+    }
+]
