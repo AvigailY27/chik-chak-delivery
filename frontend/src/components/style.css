@@ -1,0 +1,147 @@
+/* הגדרות כלליות */
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl; 
+    background-color: #f4f4f4; /* צבע רקע כללי */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.main-panels {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px; /* רווח בין הפאנלים */
+    margin-top: 30px;
+}
+/* הוסיפי למחלקה של הפאנלים עצמם (למשל ב-ManagerPanel וב-CourierPanel) */
+.panel-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 30px 25px;
+    min-width: 350px;
+    max-width: 500px;
+}
+h1 {
+   font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* עיצוב של הטופס */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+h3 {
+    color: #444;
+}
+
+/* עיצוב של שדות הטבלה */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button[type="button"] {
+    background-color: #f44336;
+}
+
+button[type="button"]:hover {
+    background-color: #e6362e;
+}
+
+/* עיצוב של הודעה */
+div {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e7f7e7;
+    color: #4CAF50;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* עיצוב הקונטיינר הראשי */
+.container {
+    padding: 20px;
+    /* background: url('c:/Users/WIN 11/Downloads/assets_task_01jv266vkbfn19gtxpwpf2qrmk_1747051646_img_0.webp') no-repeat center center; */
+    background-size: contain; /* התאמת התמונה לגודל הקונטיינר */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 50px auto;
+    transition: background 0.5s ease; /* מעבר חלק בין רקעים */
+}
+.delivery-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.delivery-form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.delivery-form-header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.delivery-form-header p {
+    font-size: 16px;
+    color: #666;
+}
+
+.delivery-form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}

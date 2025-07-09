@@ -1,16 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import DeliveryForm from './components/DeliveryForm.js';
+import Frmmain from './components/frmmain.js';
+import Frmdeliveries from './components/frmdeliveries.js';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Frmmain />} />
+        <Route path="/Administrator" element={<DeliveryForm />} />
+        <Route path="/deliver" element={<Frmdeliveries />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

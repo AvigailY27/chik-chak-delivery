@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 #אפשרי מטריצת סמיכיות ין כל יעד מי סמוך אליו
 import networkx as nx
 
-
 def get_shortest_route_and_length(graph, source_node, target_node, weight='length'):
     try:
         path = nx.shortest_path(graph, source=source_node, target=target_node, weight=weight)
@@ -18,8 +17,6 @@ def get_shortest_route_and_length(graph, source_node, target_node, weight='lengt
         return {
             'error': f"No path found between {source_node} and {target_node}"
         }
-
-
 # קריאה לפונקציה כך: result = get_shortest_route_and_length(graphmaps, node1, node2)
 
 destinations = []  # סתםםםםםםםםם
@@ -46,5 +43,4 @@ for dest in destinations:
     x, y = dest[2][1], dest[2][0]
     ax.text(x, y, dest[1], fontsize=12, ha='right', color='black',
             bbox=dict(facecolor='white', alpha=0.7, edgecolor='none'))
-
 plt.show()

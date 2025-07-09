@@ -3,6 +3,7 @@ import osmnx as ox
 import kmeans1 as kmeans1
 import matplotlib.pyplot as plt
 import networkx as nx
+import os
 import folium
 # חלוקת  אזורים
 # וחיפוש מי הקרוב ביותר למיקום שלי איזה אזור ובתוך האזור איזה כתובת
@@ -55,7 +56,9 @@ def draw_ordered_route(graph, addresses, start_address):
                 icon=folium.Icon(color="red", icon="info-sign")
             ).add_to(m)
     # שמירת המפה כקובץ HTML
-    m.save("map_with_route.html")
+
+    os.makedirs('static', exist_ok=True)
+    m.save("static/map_with_route.html")
     print("המפה נשמרה כקובץ map_with_route.html")
 
 def addresses_to_nodes(graph, addresses):

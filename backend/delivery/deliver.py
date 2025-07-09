@@ -20,17 +20,6 @@ class Delivery:
         """הוספת אילוץ נוסף למשלוח"""
         self.constraints.append(constraint)
 
-
-# מחלקה של שליח
-class DeliveryPerson:
-    def __init__(self, person_id, name, capacity, working_hours):
-        self.person_id = person_id  # מזהה ייחודי לשליח
-        self.name = name  # שם השליח
-        # self.vehicle_type = vehicle_type  # סוג הרכב (רכב, אופנוע, אופניים)
-        self.capacity = capacity  # קיבולת הרכב (כמה חבילות יכול לקחת)
-        self.working_hours = working_hours  # שעות פעילות (לדוגמה: "08:00-18:00")
-
-
 class Constraint:
     def __init__(self, constraint_type: str, details: str):
         """
@@ -42,7 +31,7 @@ class Constraint:
         self.details = details  # פרטי האילוץ
 
 
-class Delivery1:
+class Delivery:
     def __init__(self, destination, deadline, start, end):
         self.destination = destination  # נקודת מסירה (קואורדינטות או כתובת)
         self.deadline = deadline
@@ -77,7 +66,7 @@ def get_address_cluster_queue(clus, deliveries):
 
 # פונקציה שבונה תור עדיפיות של המשלוחים המסודרים לפי דדלין ומי הכי קרוב
 
-def update_delivery_queue(current_locations, deliveries: List[Delivery1]) -> List[Delivery1]:
+def update_delivery_queue(current_locations, deliveries: List[Delivery]) -> List[Delivery]:
     heap = []
     for j, delivery in enumerate(deliveries):
         heapq.heappush(heap, (delivery.deadline, j, delivery))  # הוספה עם אינדקס למניעת שגיאות
@@ -116,10 +105,10 @@ def update_delivery_queue(current_locations, deliveries: List[Delivery1]) -> Lis
 
 # דוגמא לנתוני משלוחים
 deliveries = [
-    Delivery1( "אבן גבירול 3 , אלעד", "6", "7:00", "8"),
-    Delivery1("הרב שלום שבזי 1, ראש העין", "6", "7:00", "8"),
-    Delivery1( "רמבם 1, אלעד", "6", "7:00", "8"),
-    Delivery1( "בעלי התוספות 10, אלעד", "6", "8:00", "8")
+    Delivery( "אבן גבירול 3 , אלעד", "6", "7:00", "8"),
+    Delivery("הרב שלום שבזי 1, ראש העין", "6", "7:00", "8"),
+    Delivery( "רמבם 1, אלעד", "6", "7:00", "8"),
+    Delivery( "בעלי התוספות 10, אלעד", "6", "8:00", "8")
 ]
 current_location = "רבי יוסי בן קיסמא 36 ,אלעד"
 

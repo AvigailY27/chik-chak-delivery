@@ -4,7 +4,7 @@ import exampleme
 import heapqstruct
 import kmeans1
 import listbuild
-import listCoorect
+import deliveryList
 import listupupdet
 import main
 import newnewosm
@@ -30,8 +30,8 @@ functions_registry = {
     "listbuild": {
         "build_route_with_delays": listbuild.build_route_with_delays,  # בניית מסלול עם עיכובים
     },
-    "listCoorect": {
-        "DeliveryLinkedList": listCoorect.DeliveryLinkedList,  # רשימה דו-כיוונית למשלוחים
+    "deliveryList": {
+        "DeliveryLinkedList": deliveryList.DeliveryLinkedList,  # רשימה דו-כיוונית למשלוחים
     },
     "listupupdet": {
         "listupupdet": listupupdet.listupupdet,  # פונקציה לניהול תור משלוחים

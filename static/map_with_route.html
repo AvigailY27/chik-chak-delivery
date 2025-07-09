@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_468d2bb961ab5c9588be477505486857 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_468d2bb961ab5c9588be477505486857" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_468d2bb961ab5c9588be477505486857 = L.map(
+                "map_468d2bb961ab5c9588be477505486857",
+                {
+                    center: [32.0492462, 34.9523196],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a633f6a5ac8e10697317d1787a8dba94 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a633f6a5ac8e10697317d1787a8dba94.addTo(map_468d2bb961ab5c9588be477505486857);
+        
+    
+            var poly_line_d103b74c2fce0e1c8944430f91d01346 = L.polyline(
+                [[32.0492462, 34.9523196], [32.0500069, 34.9519952], [32.0502877, 34.9507699], [32.0508236, 34.9508161], [32.0513971, 34.9508728], [32.0514516, 34.9510368], [32.050892, 34.9533964], [32.0509077, 34.9534889], [32.0520112, 34.9567716], [32.0519644, 34.9568931], [32.0511531, 34.9570872], [32.0511258, 34.9570561], [32.0510216, 34.9570568], [32.051, 34.9570818], [32.0509942, 34.9571976], [32.0510254, 34.9572391], [32.0510778, 34.9575646], [32.0511033, 34.9583285], [32.0511094, 34.9588617], [32.0517454, 34.9599109], [32.0511094, 34.9588617], [32.0511033, 34.9583285], [32.0510778, 34.9575646], [32.0511317, 34.9572332], [32.05115, 34.9572111], [32.0519967, 34.957064], [32.0520977, 34.9571367], [32.0522382, 34.9570952], [32.0522991, 34.9569098], [32.0521908, 34.956751], [32.0520999, 34.9552069], [32.0510418, 34.9534391], [32.0510228, 34.9533473], [32.0515996, 34.9510566], [32.0516851, 34.9509187], [32.0516051, 34.9507461], [32.0517741, 34.9495489], [32.0518173, 34.9491529], [32.0516651, 34.9491109], [32.0515814, 34.9491553], [32.0509324, 34.9486651], [32.0515361, 34.9472684], [32.0509905, 34.9472534], [32.0498266, 34.9472198]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_468d2bb961ab5c9588be477505486857);
+        
+    
+            var marker_9a140ee1769b5aab92505d2f670af65c = L.marker(
+                [32.0517454, 34.9599109],
+                {
+}
+            ).addTo(map_468d2bb961ab5c9588be477505486857);
+        
+    
+            var icon_41980949f86c0649bcb9dc5bc4532163 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afac24796b2ef0e0b42e93dce38ea3c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f7afc2db414edaa4d0fbb757e336b87 = $(`<div id="html_5f7afc2db414edaa4d0fbb757e336b87" style="width: 100.0%; height: 100.0%;"><b>כתובת:</b> רבי פנחס בן יאיר אלעד<br><b>צומת:</b> 1430773790</div>`)[0];
+                popup_afac24796b2ef0e0b42e93dce38ea3c9.setContent(html_5f7afc2db414edaa4d0fbb757e336b87);
+            
+        
+
+        marker_9a140ee1769b5aab92505d2f670af65c.bindPopup(popup_afac24796b2ef0e0b42e93dce38ea3c9)
+        ;
+
+        
+    
+    
+                marker_9a140ee1769b5aab92505d2f670af65c.setIcon(icon_41980949f86c0649bcb9dc5bc4532163);
+            
+    
+            var marker_3d610e5589b564c467bd3aeae6b223cf = L.marker(
+                [32.0498266, 34.9472198],
+                {
+}
+            ).addTo(map_468d2bb961ab5c9588be477505486857);
+        
+    
+            var icon_ff170dadb527abf8176cd27ca1eccd5a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8c234a663b0cb2a3e6cc2d5edca4e23e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_57bd546f2e9ee8ed5222fa12c7b4eaca = $(`<div id="html_57bd546f2e9ee8ed5222fa12c7b4eaca" style="width: 100.0%; height: 100.0%;"><b>כתובת:</b> התור אלעד<br><b>צומת:</b> 1430808610</div>`)[0];
+                popup_8c234a663b0cb2a3e6cc2d5edca4e23e.setContent(html_57bd546f2e9ee8ed5222fa12c7b4eaca);
+            
+        
+
+        marker_3d610e5589b564c467bd3aeae6b223cf.bindPopup(popup_8c234a663b0cb2a3e6cc2d5edca4e23e)
+        ;
+
+        
+    
+    
+                marker_3d610e5589b564c467bd3aeae6b223cf.setIcon(icon_ff170dadb527abf8176cd27ca1eccd5a);
+            
+</script>
+</html>

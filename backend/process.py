@@ -8,18 +8,15 @@ def process_input_file(file_path):
     deliveries = []
     with open(file_path, 'r', encoding='utf-8-sig') as file:
         reader = csv.reader(file)
-        next(reader, None)  # דילוג על שורת הכותרת
+        header = next(reader, None)  # דילוג על שורת הכותרת
+        if header is None:
+            raise ValueError("The file is empty or missing a header.")
+
         for row in reader:
-            # דילוג על שורות ריקות
-            if not any(row):
+            if not any(row) or len(row) < 4:
+                print(f"שורה לא תקינה: {row}")
                 continue
-            
-            # בדיקה אם חסרים נתונים
-            if len(row) < 4:
-                print(f"שורה עם נתונים חסרים: {row}")
-                continue
-            
-            # יצירת אובייקט משלוח
-            delivery = deliver.Delivery1(row[0].strip(), row[1].strip(), row[2].strip(), row[3].strip())
+            delivery = deliver.Delivery(*[col.strip() for col in row[:4]])
             deliveries.append(delivery)
+        print(f"Loaded {len(deliveries)} deliveries.")
     return deliveries

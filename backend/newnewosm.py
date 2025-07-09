@@ -8,9 +8,6 @@ import speedkh as speedgb
 from shapely.geometry import LineString
 from shapely.wkt import loads as wkt_loads
 import osmnx as ox
-print(ox.__version__)
-
-
 #   יעד -מחלקת צומת
 class Intersection:
     def __init__(self, idins):
@@ -45,32 +42,31 @@ def map_mapping_graf(place_name):
     return graphmap, nodes, edges
 
 
-def calculate_travel_time(distance_km, speed_kmh, traffic_factor=1.0):
+def calculate_travel_time(distance_km, speed_kmh, traffic_factor):
     """
     מחשבת זמן נסיעה בכביש לפי מרחק, מהירות מותרת ועומס תנועה.
-
     :param distance_km: אורך הכביש בקילומטרים
     :param speed_kmh: מהירות מותרת בקמ"ש
     :param traffic_factor: מקדם עומס תנועה (ערך בין 0 ל-1, שבו 1 = תנועה זורמת, 0.5 = עומס גבוה)
     :return: זמן נסיעה משוער בדקות
     """
-
+    try:
+        speed_kmh = float(speed_kmh)
+    except (TypeError, ValueError):
+        raise ValueError(f"speed_kmh חייב להיות מספר, קיבלתי: {speed_kmh}")
     if speed_kmh is None or speed_kmh <= 0:
         raise ValueError("המהירות חייבת להיות חיובית")
-
     actual_speed = speed_kmh * traffic_factor  # מהירות בפועל לפי עומס תנועה
-
     if actual_speed <= 0:
         raise ValueError("המהירות בפועל נמוכה מדי, כנראה פקק מוחלט")
 
-    time_hours = distance_km / actual_speed  # זמן בשעות
+    time_hours = distance_km / actual_speed  #   לפי הנוסחה דרך\מהירות= זמן בשעות
     time_minutes = time_hours * 60  # המרה לדקות
     # חישוב שעות ודקות
     hours, minutes = divmod(time_minutes, 60)
     hours = int(hours)  # המרת שעות למספר שלם
     minutes = int(minutes)  # המרת דקות למספר שלם
     print(f"זמן נסיעה משוער: {minutes} דקות : {hours}שעות :")
-
     return time_minutes  # החזרת זמן הנסיעה בדקות
 
 
@@ -101,8 +97,9 @@ def clean_graph_attributes(graph):
         for attr in list(data.keys()):
             if isinstance(data[attr], unsupported_types):
                 del data[attr]  # הסרת המאפיין
-video_path = "G:\לימודים\יד\פרויקט גמר\קצר.mp4"
-output_file = "G:\לימודים\יד\פרויקט גמר\קצר.txt"
+                
+video_path = "F:\לימודים\יד\פרויקט גמר\קצר.mp4"
+output_file = "F:\לימודים\יד\פרויקט גמר\קצר.txt"
 lanswidth = 420
 langthveicle = 220
 
@@ -119,9 +116,6 @@ def classify_intersections(graphmap):
             edge_data = graphmap.get_edge_data(u, v, key) or {}
             print(edge_data)
             print(edge_data.keys())
-            # print(edges[['lanes']])
-            #         edge_data = graphmap.get_edge_data(u, v, k)
-            # נוודא שנקבל את ה-lanes בצורה נכונה
             lanes = estimate_lanes(edge_data)
             # lanes = edge_data.get('lanes', 1)
             length = (edge_data.get('length', 1))
@@ -131,7 +125,7 @@ def classify_intersections(graphmap):
             print(sumveicle)
             #  נישמור במשתנה load את העומס בקשת שלו לפי ניתוח סירטון שהתקבל ממצלמות
             load = calculate_load(sumveicle, length, lanes)
-            timest = calculate_travel_time(length, speedgb.get_edge_speed(edge_data))
+            timest = calculate_travel_time(length, speedgb.get_edge_speed(edge_data),load)
 
             # עדכון משקל הקשת לפי זמן נסיעה
             nx.set_edge_attributes(graphmap, {(u, v, key): {'weight': timest}})
@@ -143,31 +137,25 @@ def classify_intersections(graphmap):
     # שמירת הגרף
     nx.write_graphml(graphmap, "graphmap.graphml")
     return intersections , graphmap # מחזיר את כל הצמתים ואיזה קשתות מחובורת לכל צומת
-
-def calculate_travel_time_between_coordinates(graph, source_address, destination_address):
     """
     מחשבת את זמן הנסיעה הכולל בין שתי כתובות.
-    :param graph: גרף NetworkX
-    :param source_address: כתובת מקור (מחרוזת)
-    :param destination_address: כתובת יעד (מחרוזת)
-    :return: זמן נסיעה בדקות (float או int)
+    :return: זמן נסיעה בדקות 
     """
+def calculate_travel_time_between_coordinates(graph, source_address, destination_address):
     try:
         # המרת כתובות לקואורדינטות
-        source_coords = kmeans1.get_coordinates(source_address)
-        destination_coords = kmeans1.get_coordinates(destination_address)
-
+        lat_source_coords, lon_source_coords = kmeans1.get_coordinates(source_address)
+        lat_destination_coords,lon_destination_coords = kmeans1.get_coordinates(destination_address)
         # בדיקה אם הקואורדינטות תקינות
-        if source_coords is None:
+        if lat_source_coords is None or lon_source_coords is None:
             raise ValueError(f"לא נמצאו קואורדינטות עבור כתובת המקור: {source_address}")
-        if destination_coords is None:
+        if lat_destination_coords is None or lon_destination_coords is None:
             raise ValueError(f"לא נמצאו קואורדינטות עבור כתובת היעד: {destination_address}")
-
         # המרת קואורדינטות לצמתים בגרף
-        source_node = kmeans1.get_node_id(graph, source_coords[1], source_coords[0])  # lon, lat
-        destination_node = kmeans1.get_node_id(graph, destination_coords[1], destination_coords[0])  # lon, lat
-
-        print(f"חישוב זמן נסיעה בין צמתים {source_node} ל-{destination_node}")
+        source_node = kmeans1.get_node_id(graph,lon_source_coords ,lat_source_coords)  # lon, lat
+        destination_node = kmeans1.get_node_id(graph, lon_destination_coords, lat_destination_coords)  # lon, lat
+        if source_node == destination_node:
+            return 0
         try:
             total_travel_time = nx.shortest_path_length(graph, source_node, destination_node, weight='weight')
             return total_travel_time
@@ -180,6 +168,9 @@ def calculate_travel_time_between_coordinates(graph, source_address, destination
     except Exception as e:
         print(f"שגיאה בחישוב זמן הנסיעה: {e}")
         return None 
+    
+
+
 #  שמירת הצמתים ל-CSV (ללא כפילויות)
 filename1 = r"C:\Users\WIN 11\PycharmProjects\pythonProjectyolo\intersections_data.csv"
 
@@ -214,21 +205,3 @@ def save_intersections_to_csv(intersections, filename=filename1):
     combined_data.to_csv(filename, index=False, mode='w', encoding="utf-8-sig")  # כתיבה מחדש בלי כפילות
     print(f" הנתונים נשמרו בהצלחה  ")
 
-
-"""
-# ✅ הפעלת כל החלקים
-place_name = "אלעד, ישראל"
-graphmaps, nodes, edges = map_mapping_graf(place_name)
-intersections = classify_intersections(graphmaps)
-# save_intersections_to_csv(intersections)  # שמירה לקובץ
-
-# ✅ הדפסת נתונים
-for node, intersections in intersections.items():
-    print(f"\nצומת {intersections.id} | קשתות מחוברות: {len(intersections.connected_edges)}")
-for edge in intersections.connected_edges:
-    print(f" ️קשת: אורך {edge.length} מ', נתיבים: {edge.lanes}, חד סטרי/דו סטרי: {edge.direction}, "
-          f"עומס: {edge.load}, זמן נסיעה: {edge.times}")
-
-    #  הצגת המפה
-# fig, ax = ox.plot_graph(graphmaps, show=True, close=False)
-"""
