@@ -72,5 +72,5 @@ Developed by Avigail Y.2024, 2025
 
 
 GitHub Repo:
-https://github.com/AvigailY27/chikchakdelivery
+https://github.com/AvigailY27/chik-chak-delivery
 
